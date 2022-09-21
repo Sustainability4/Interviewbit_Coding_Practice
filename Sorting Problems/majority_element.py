@@ -72,4 +72,86 @@ class Solution:
             return value
         else:
             return list(A)[0]   
+        
+        
+     '''
+    def majorityElement(self, A):
+        list_A = list(A)
+        if len(list_A) == 1:
+            return list_A[0]
+        
+        length = len(A)
+        floor = int(length/2)
+        
+        # Quick Sort 
+        def quick_sort(list_A, i, j):
+            if i >= j:
+                return 
+            
+            if i+1 == j:
+                if list_A[i]>list_A[j]:
+                    lower = list_A[j]
+                    list_A[j] - list_A[i]
+                    list_A[i] = lower
+                
+                return list_A
+            
+            pivot = list_A[i]
+            start_index = i
+            end_index = j
+            
+            i = i+1
+            
+            while i<j:
+                while list_A[i] <= pivot:
+                    if i == end_index:
+                        break
+                    else:
+                        i = i+1
+                
+                while list_A[j] > pivot:
+                    if j == start_index:
+                        break
+                    else:
+                        j = j-1
+                        
+                if i<j:
+                    lower = list_A[j]
+                    list_A[j] = list_A[i]
+                    list_A[i] = lower
+            
+            
+            lower = list_A[j]
+            list_A[j] = list_A[start_index]
+            list_A[start_index] = lower
+            
+            
+            quick_sort(list_A,start_index,j-1)
+            quick_sort(list_A, j+1, end_index)
+            
+            return list_A
+        
+        list_A = quick_sort(list_A, 0, length-1)
+        
+        count_value = list_A[0]
+        value = 0
+        frequency = 0
+        count = 0
+        
+        for index in range(len(list_A)):
+            element = list_A[index]
+            if count_value == element: 
+                count = count+1
+            if count_value != element:
+                if count > frequency:
+                    frequency = count
+                    value = list_A[index-1]
+                count = 1
+                count_value = element 
+        
+        if frequency > floor:
+            return value
+        else:
+            return list(A)[0]
+    '''    
     
